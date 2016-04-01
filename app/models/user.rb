@@ -5,8 +5,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :board_members, foreign_key: :member_id
-  has_many :boards, :through => :board_members, :source => :board
+  has_many :board_members, class_name: "BoardMember", foreign_key: :member_id
+  has_many :boards, :through => :board_members
 
   has_many :lists, through: :boards
 
