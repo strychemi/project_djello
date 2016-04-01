@@ -1,0 +1,3 @@
+djello.controller('BoardCtrl', [function(){
+
+}]);

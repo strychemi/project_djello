@@ -17,6 +17,11 @@ var djello = angular.module('djello', ['ui.router', 'ui.bootstrap', 'restangular
                     url: '',
                     templateUrl: 'templates/home.html',
                 })
+                .state('dashboard', {
+                    url: '/dashboard/:id',
+                    templateUrl: 'templates/dashboard.html',
+                    controller: 'BoardCtrl'
+                })
 
         }])
     //Error Logging
