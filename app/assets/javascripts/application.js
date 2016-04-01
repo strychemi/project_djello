@@ -21,5 +21,6 @@
 //= require angular-ui-router.min.js
 //= require ui-bootstrap-tpls-1.2.5.min.js
 //= require angular-devise
+//= require xeditable.min.js
 
 //= require_tree .

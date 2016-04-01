@@ -1,5 +1,5 @@
 djello.controller('BoardCtrl',
-  ["$scope", "Auth", function($scope, Auth){
+  ["$scope", "Auth", 'apiService', function($scope, Auth, apiService){
     Auth.currentUser().then(function(user) {
       $scope.currentUser = user;
         // User was logged in, or Devise returned
@@ -9,4 +9,5 @@ djello.controller('BoardCtrl',
       // unauthenticated error
         console.log(error);
     });
+      $scope.data = apiService.data;
 }]);
