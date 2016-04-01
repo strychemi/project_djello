@@ -5,5 +5,9 @@ djello.factory('boardService',
 
     var obj = {};
 
+    obj.boards = [];
+
+
+
     return obj;
 }]);

@@ -4,7 +4,7 @@ class BoardsController < ApplicationController
   def index
     @boards = current_user.owned_boards
     respond_to do |format|
-      format.json {render json: @boards}
+      format.json {render json: @boards.to_json(include: [:lists => {include: :cards}])}
     end
   end
 end

@@ -31,7 +31,7 @@ var djello = angular.module('djello', ['ui.router', 'ui.bootstrap', 'restangular
                 .state('boardShow', {
                   url: '/board/:id',
                   templateUrl: 'templates/boardShow.html',
-                  controller: 'BoardCtrl'
+                  controller: 'BoardShowCtrl'
                 });
 
         }])

@@ -1,3 +1,6 @@
 <h1>board index</h1>
-<div class="h3">USER: {{currentUser}}</div>
-<div class="h3">DATA: {{data}}</div>
+
+
+<div ng-repeat="(k,v) in boards">
+    <a ui-sref="boardShow({ id: v.id })">{{v.title}}</a>
+</div>
