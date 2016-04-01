@@ -15,6 +15,7 @@ gem 'angularjs-rails'
 gem 'angular_rails_csrf'
 gem 'faker'
 gem 'binding_of_caller'
+gem 'devise'
 
 group :development, :test do
   gem 'hirb'
@@ -36,4 +37,8 @@ group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'meta_request'
+end
+
+source "https://rails-assets.org" do
+  gem "rails-assets-angular-devise"
 end
