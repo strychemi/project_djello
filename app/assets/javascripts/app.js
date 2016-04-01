@@ -7,6 +7,7 @@ var djello = angular.module('djello', ['ui.router', 'ui.bootstrap', 'restangular
     //Devise Config
     .config(function(AuthProvider) {
         // Configure Auth service with AuthProvider
+        // headers: {'X-HTTP-Method-Override': 'DELETE'}
     })
     //UI Router Config
     .config(['$urlRouterProvider', '$stateProvider',
@@ -17,11 +18,16 @@ var djello = angular.module('djello', ['ui.router', 'ui.bootstrap', 'restangular
                     url: '',
                     templateUrl: 'templates/home.html',
                 })
-                .state('dashboard', {
-                    url: '/dashboard/:id',
-                    templateUrl: 'templates/dashboard.html',
+                .state('boardIndex', {
+                    url: '/index',
+                    templateUrl: 'templates/index.html',
                     controller: 'BoardCtrl'
                 })
+                .state('boardShow', {
+                  url: '/board/:id',
+                  templateUrl: 'templates/boardShow.html',
+                  controller: 'BoardCtrl'
+                });
 
         }])
     //Error Logging
