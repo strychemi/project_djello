@@ -10,6 +10,10 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'angualarjs-rails'
+gem 'angular_rails_csrf'
+gem 'faker'
+gem 'binding_of_caller'
 
 group :development, :test do
   gem 'hirb'
@@ -22,6 +26,9 @@ group :development, :test do
   gem 'launchy'
   gem 'selenium-webdriver'
   gem 'byebug'
+  gem 'better_errors'
+  gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
+  gem 'pry-byebug'
 end
 
 group :development do
