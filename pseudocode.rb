@@ -14,7 +14,9 @@ Rails
     Boards (can have many members, belongs to User)
       title
       user_id
+
       has_many lists
+      has_many :board_members
 
     BoardMembers (join table of Users and Boards)
       belongs_to :board_id
