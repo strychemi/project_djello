@@ -52,14 +52,14 @@ AngularJS
     .state("dashboard.board", {
       url: "/:id"
       })
-  controllers
+  controllers # wrap the services in each controller
     boardController.js
     cardService.js
     listService.js
     userService.js
   directives
   filters
-  services
+  services # Restangular API requests go in each service
     boardService.js
     cardService.js
     listService.js
