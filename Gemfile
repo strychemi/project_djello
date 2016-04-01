@@ -13,7 +13,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'angularjs-rails'
 gem 'angular_rails_csrf'
-gem 'faker'
+gem 'faker', github: 'stympy/faker'
 gem 'binding_of_caller'
 gem 'devise'
 

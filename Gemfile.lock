@@ -15,6 +15,13 @@ GIT
       pry-stack_explorer (~> 0.4.9)
       railties (>= 3.0, < 5.0)
 
+GIT
+  remote: git://github.com/stympy/faker.git
+  revision: ffe60761e02fb93a77b8aa7744f42f0807034f13
+  specs:
+    faker (1.6.3)
+      i18n (~> 0.5)
+
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
@@ -117,8 +124,6 @@ GEM
     factory_girl_rails (4.6.0)
       factory_girl (~> 4.5.0)
       railties (>= 3.0.0)
-    faker (1.6.3)
-      i18n (~> 0.5)
     ffi (1.9.10)
     formatador (0.2.5)
     git-version-bump (0.15.1)
@@ -324,7 +329,7 @@ DEPENDENCIES
   database_cleaner
   devise
   factory_girl_rails
-  faker
+  faker!
   guard
   guard-rspec
   hirb

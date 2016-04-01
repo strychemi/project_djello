@@ -12,7 +12,5 @@ djello.factory('apiService', ['Restangular', function(Restangular){
            console.log("It didn't work");
        });
     };
-
     return obj;
-
 }]);
