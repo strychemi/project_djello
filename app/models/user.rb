@@ -5,12 +5,15 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :board_members, class_name: "BoardMember", foreign_key: :member_id
+
+  has_many :owned_boards, class_name: "Board", dependent: :destroy
+
+  has_many :board_members, class_name: "BoardMember", foreign_key: :member_id, dependent: :destroy
   has_many :boards, :through => :board_members
 
   has_many :lists, through: :boards
 
-  has_many :card_members
+  has_many :card_members, class_name: "CardMember", foreign_key: :member_id
   has_many :cards, through: :card_members
 
 
