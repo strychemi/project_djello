@@ -24,7 +24,7 @@ var djello = angular.module('djello', ['ui.router', 'ui.bootstrap', 'restangular
                     controller: 'BoardCtrl',
                     resolve: {
                         data: ['apiService', function(apiService){
-                            return apiService.getData()[0];
+                            return apiService.getData();
                         }]
                     }
                 })
