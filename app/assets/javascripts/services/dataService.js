@@ -1,4 +1,4 @@
-djello.factory('boardService',
+djello.factory('dataService',
   ['Restangular',
   function(Restangular){
 
@@ -24,6 +24,25 @@ djello.factory('boardService',
 
     var getBoards = function() {
       return _boards;
+    };
+
+    var getLists = function(boardId) {
+      return _boards[boardId].lists;
+    };
+
+    var getCards = function(boardId, listId) {
+      return _boards[boardId][listId].cards;
+    };
+
+    var createBoard = function() {
+      Restangular.all('boards').getList()
+      .then(
+        function(data) {
+          _rawData = data;
+          populateBoards();
+        }, function(error){
+          console.log("API call for all boards didn't work.");
+     });
     };
 
     return {

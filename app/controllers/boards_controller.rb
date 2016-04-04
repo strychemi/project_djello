@@ -7,4 +7,43 @@ class BoardsController < ApplicationController
       format.json {render json: @boards.to_json(include: [:lists => {include: :cards}])}
     end
   end
+
+  def create
+    @board = current_user.owned_boards.build(title: "Give me a title...")
+    respond_to do |format|
+      if @board.save
+        format.json { render json: @board, status: :created }
+      else
+        format.json { render json: @board, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def update
+    @board = current_user.owned_boards.find(params[:id])
+    respond_to do |format|
+      if @board.update(board_params)
+        format.json { render json: @board, status: 200 }
+      else
+        format.json { render json: @board, status: 404 }
+      end
+    end
+  end
+
+  def destroy
+    @board = current_user.owned_boards.find(params[:id])
+    respond_to do |format|
+      if @board.destroy
+        format.json { render json: @board, status: 200 }
+      else
+        format.json { render json: @board, status: 404 }
+      end
+    end
+  end
+
+  private
+
+  def board_params
+    params.require(:board).permit(:title)
+  end
 end

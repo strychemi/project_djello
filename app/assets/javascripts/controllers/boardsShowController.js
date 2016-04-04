@@ -1,5 +1,5 @@
 djello.controller('BoardsShowCtrl',
-  ['$scope', 'boardService', '$stateParams',
-    function($scope, boardService, $stateParams){
-      $scope.board = boardService.getBoards()[$stateParams.id];
+  ['$scope', 'dataService', '$stateParams',
+    function($scope, dataService, $stateParams){
+      $scope.board = dataService.getBoards()[$stateParams.id];
 }]);

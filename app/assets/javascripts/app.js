@@ -12,12 +12,8 @@ var djello = angular.module('djello', ['ui.router', 'ui.bootstrap', 'restangular
     //UI Router Config
     .config(['$urlRouterProvider', '$stateProvider',
         function($urlRouterProvider, $stateProvider) {
+          $urlRouterProvider.otherwise('/boards');
           $stateProvider
-
-            .state('home', {
-              url: '',
-              templateUrl: 'templates/home.html',
-            })
             .state('boards', {
               url: '/boards',
               abstract: true,
@@ -28,10 +24,10 @@ var djello = angular.module('djello', ['ui.router', 'ui.bootstrap', 'restangular
                 }
               },
               resolve: {
-                boardData: ['boardService', function(boardService) {
-                  return boardService.callAllBoardsData()
+                boardData: ['dataService', function(dataService) {
+                  return dataService.callAllBoardsData()
                     .then(function() {
-                      return boardService.getBoards();
+                      return dataService.getBoards();
                     });
                 }]
               }
