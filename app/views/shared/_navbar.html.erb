@@ -6,9 +6,12 @@
               Djello
             </a>
           </div>
+
           <div class="navbar-text pull-right">
-            <div class="navbar-link"><%= current_user.email %></div>
             <%= link_to "Sign Out", destroy_user_session_path, class: "navbar-link", method: :delete %>
+          </div>
+          <div class="navbar-text pull-right">
+            <%= current_user.email %>
           </div>
         <% else %>
           <div class="navbar-header">
