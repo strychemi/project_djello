@@ -3,10 +3,31 @@
 
 User.destroy_all
 
-# Make harry potter master account
-User.create(email: "harry@potter.com", password: "qwerqwer")
+# Multiplier for scaling seed data
 
 MULTIPLIER = 3
+
+
+# Make harry potter master account
+
+u = User.create(email: "harry@potter.com", password: "qwerqwer")
+MULTIPLIER.times do
+  b = u.owned_boards.build
+  b.title = Faker::Book.title
+  b.save
+  MULTIPLIER.times do
+    l = b.lists.build
+    l.title = Faker::Superhero.name
+    l.description = Faker::ChuckNorris.fact
+    l.save
+    MULTIPLIER.times do
+      c = l.cards.build
+      c.title = Faker::Hipster.word
+      c.description = Faker::Hipster.sentence
+      c.save
+    end
+  end
+end
 
 def generate_one_of_each
 
@@ -20,13 +41,11 @@ def generate_one_of_each
     b = u.owned_boards.build
     b.title = Faker::Book.title
     b.save
-
     MULTIPLIER.times do
       l = b.lists.build
       l.title = Faker::Superhero.name
       l.description = Faker::ChuckNorris.fact
       l.save
-
       MULTIPLIER.times do
         c = l.cards.build
         c.title = Faker::Hipster.word
@@ -58,6 +77,6 @@ def generate_card_memberships
   end
 end
 
-generate_one_of_each
+MULTIPLIER.times { generate_one_of_each }
 generate_board_memberships
 generate_card_memberships

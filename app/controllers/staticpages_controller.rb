@@ -1,6 +1,6 @@
 class StaticpagesController < ApplicationController
-
-  def index
+  
+  def app
   end
 
 end
