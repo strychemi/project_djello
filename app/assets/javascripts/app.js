@@ -39,7 +39,13 @@ var djello = angular.module('djello', ['ui.router', 'ui.bootstrap', 'restangular
             .state('boards.show', {
               url: '/:id',
               templateUrl: 'templates/boards/boardShow.html',
-              controller: 'BoardsShowCtrl'
+              controller: 'BoardsShowCtrl',
+              resolve: {
+                board: ['dataService', '$stateParams',
+                function(dataService, $stateParams) {
+                  return dataService.getBoards()[$stateParams.id];
+                }]
+              }
             });
         }])
     //Error Logging

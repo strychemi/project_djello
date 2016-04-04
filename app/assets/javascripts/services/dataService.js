@@ -35,18 +35,17 @@ djello.factory('dataService',
     };
 
     var createBoard = function() {
-      Restangular.all('boards').post()
-      .then(
-        function(response) {
-          _boards[response.id] = response;
-        }, function(error){
-          console.log("API call for creating a board didn't work.");
-     });
+      return Restangular.all('boards').post();
+    };
+
+    var deleteBoard = function(boardId) {
+      return Restangular.one('boards', boardId).remove();
     };
 
     return {
       callAllBoardsData: callAllBoardsData,
       getBoards: getBoards,
-      createBoard: createBoard
+      createBoard: createBoard,
+      deleteBoard: deleteBoard
     };
 }]);
