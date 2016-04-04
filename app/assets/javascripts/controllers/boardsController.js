@@ -31,6 +31,17 @@ djello.controller('BoardsCtrl',
             console.log("API call for deleting a board didn't work.");
           }
         );
+      };
 
+      $scope.createList = function(boardId, title, description) {
+        dataService.createList(boardId, title, description)
+        .then(
+          function(response) {
+            $scope.boards[boardId].lists.push(response);
+          },
+          function(response) {
+            console.log("API call for creating a List didn't work.");
+          }
+        );
       };
 }]);

@@ -42,10 +42,20 @@ djello.factory('dataService',
       return Restangular.one('boards', boardId).remove();
     };
 
+    var createList = function(boardId, title, description) {
+      var listParams = {
+        board_id: boardId,
+        title: title,
+        description: description
+      };
+      return Restangular.all('lists').post(listParams);
+    };
+
     return {
       callAllBoardsData: callAllBoardsData,
       getBoards: getBoards,
       createBoard: createBoard,
-      deleteBoard: deleteBoard
+      deleteBoard: deleteBoard,
+      createList: createList
     };
 }]);
