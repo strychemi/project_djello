@@ -1,9 +1,10 @@
 <% unless user_signed_in? %>
-  <div class="row">
-    <div class="jumbotron">
-      <h1>Welcome to Djello</h1>
+
+  <div class="jumbotron" style="margin-top: -1px">
+    <div class="container">
+      <h1 class="text-center">Welcome to Djello</h1>
     </div>
-  </div>
+</div>
 <% else %>
   <ui-view></ui-view>
 <% end %>
