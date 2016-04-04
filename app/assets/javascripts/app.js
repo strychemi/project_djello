@@ -12,33 +12,32 @@ var djello = angular.module('djello', ['ui.router', 'ui.bootstrap', 'restangular
     //UI Router Config
     .config(['$urlRouterProvider', '$stateProvider',
         function($urlRouterProvider, $stateProvider) {
-            $stateProvider
+          $stateProvider
 
-                .state('home', {
-                    url: '',
-                    templateUrl: 'templates/home.html',
-                })
-                .state('boardIndex', {
-                    url: '/index',
-                    templateUrl: 'templates/index.html',
-                    controller: 'BoardCtrl',
-                    resolve: {
-                        data: ['apiService', function(apiService){
-                            return apiService.getData();
-                        }]
-                    }
-                })
-                .state('boardShow', {
-                  url: '/board/:id',
-                  templateUrl: 'templates/boardShow.html',
-                  controller: 'BoardShowCtrl'
-                });
-
+            .state('home', {
+              url: '',
+              templateUrl: 'templates/home.html',
+            })
+            .state('boardIndex', {
+              url: '/boards',
+              templateUrl: 'templates/boardIndex.html',
+              controller: 'BoardCtrl',
+              resolve: {
+                data: ['apiService', function(apiService){
+                  return apiService.getData();
+                }]
+              }
+            })
+            .state('boardShow', {
+              url: '/boards/:id',
+              templateUrl: 'templates/boardShow.html',
+              controller: 'BoardShowCtrl'
+            });
         }])
     //Error Logging
     .run(function($rootScope){
-        $rootScope.$on("$stateChangeError", console.log.bind(console));
+      $rootScope.$on("$stateChangeError", console.log.bind(console));
     })
     .run(function(editableOptions) {
-    editableOptions.theme = 'bs3'; // bootstrap3 theme. Can be also 'bs2', 'default'
+      editableOptions.theme = 'bs3'; // bootstrap3 theme. Can be also 'bs2', 'default'
     });

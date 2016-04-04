@@ -21,5 +21,9 @@ djello.factory('apiService', ['Restangular', function(Restangular, boardService)
         });
     };
 
+    obj.getBoard = function() {
+      
+    };
+
     return obj;
 }]);

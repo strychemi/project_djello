@@ -1,16 +1,21 @@
 <nav class="navbar navbar-default" style='margin:0'>
       <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="<%= root_path %>">
-            Djello
-          </a>
-        </div>
         <% if user_signed_in? %>
+          <div class="navbar-header">
+            <a class="navbar-brand" ui-sref="boardIndex">
+              Djello
+            </a>
+          </div>
           <div class="navbar-text pull-right">
             <div class="navbar-link"><%= current_user.email %></div>
             <%= link_to "Sign Out", destroy_user_session_path, class: "navbar-link", method: :delete %>
           </div>
         <% else %>
+          <div class="navbar-header">
+            <a class="navbar-brand" href="<%= root_path %>">
+              Djello
+            </a>
+          </div>
           <div class="navbar-text pull-right">
             <a  class="navbar-link" href="<%= new_user_session_path %>">Sign In</a>
           </div>

@@ -14,6 +14,5 @@ djello.controller('BoardCtrl',
         console.log(error);
     });
 
-    $scope.boards = apiService.boards;
-      console.log($scope.boards);
+  $scope.boards = apiService.boards;
 }]);
