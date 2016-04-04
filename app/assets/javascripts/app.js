@@ -28,8 +28,11 @@ var djello = angular.module('djello', ['ui.router', 'ui.bootstrap', 'restangular
                 }
               },
               resolve: {
-                data: ['apiService', function(apiService){
-                  return apiService.getData();
+                boardData: ['boardService', function(boardService) {
+                  return boardService.callAllBoardsData()
+                    .then(function() {
+                      return boardService.getBoards();
+                    });
                 }]
               }
             })
@@ -41,12 +44,7 @@ var djello = angular.module('djello', ['ui.router', 'ui.bootstrap', 'restangular
             .state('boards.show', {
               url: '/:id',
               templateUrl: 'templates/boards/boardShow.html',
-              controller: 'BoardsShowCtrl',
-              resolve: {
-                board: ['apiService', '$stateParams', function(apiService, $stateParams) {
-                  return apiService.boards[$stateParams.id];
-                }]
-              }
+              controller: 'BoardsShowCtrl'
             });
         }])
     //Error Logging
