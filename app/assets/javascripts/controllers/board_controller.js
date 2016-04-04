@@ -1,4 +1,4 @@
-djello.controller('BoardCtrl',
+djello.controller('BoardsCtrl',
   ["$scope",
   "Auth",
   'data',
@@ -14,5 +14,5 @@ djello.controller('BoardCtrl',
         console.log(error);
     });
 
-  $scope.boards = apiService.boards;
+  $scope.boards = data;
 }]);

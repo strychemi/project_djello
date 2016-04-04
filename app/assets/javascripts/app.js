@@ -18,20 +18,35 @@ var djello = angular.module('djello', ['ui.router', 'ui.bootstrap', 'restangular
               url: '',
               templateUrl: 'templates/home.html',
             })
-            .state('boardIndex', {
+            .state('boards', {
               url: '/boards',
-              templateUrl: 'templates/boardIndex.html',
-              controller: 'BoardCtrl',
+              abstract: true,
+              views: {
+                '': {
+                  template: '<ui-view></ui-view>',
+                  controller: 'BoardsCtrl'
+                }
+              },
               resolve: {
                 data: ['apiService', function(apiService){
                   return apiService.getData();
                 }]
               }
             })
-            .state('boardShow', {
-              url: '/boards/:id',
-              templateUrl: 'templates/boardShow.html',
-              controller: 'BoardShowCtrl'
+            .state('boards.index', {
+              url: '',
+              templateUrl: 'templates/boards/boardIndex.html',
+              controller: 'BoardsCtrl',
+            })
+            .state('boards.show', {
+              url: '/:id',
+              templateUrl: 'templates/boards/boardShow.html',
+              controller: 'BoardsShowCtrl',
+              resolve: {
+                board: ['apiService', '$stateParams', function(apiService, $stateParams) {
+                  return apiService.boards[$stateParams.id];
+                }]
+              }
             });
         }])
     //Error Logging

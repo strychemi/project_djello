@@ -2,5 +2,5 @@
 
 
 <div ng-repeat="(k,v) in boards">
-    <a ui-sref="boardShow({ id: v.id })">{{v.title}}</a>
+    <a ui-sref="boards.show({ id: {{v.id}} })">{{v.title}}</a>
 </div>

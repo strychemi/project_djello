@@ -9,7 +9,7 @@ djello.factory('apiService', ['Restangular', function(Restangular, boardService)
            //console.log("data from service:", data[0]);
            obj.data = data;
            obj.populateBoards();
-           return data;
+           return obj.data;
        }, function(error){
            console.log("It didn't work");
        });
@@ -22,7 +22,7 @@ djello.factory('apiService', ['Restangular', function(Restangular, boardService)
     };
 
     obj.getBoard = function() {
-      
+
     };
 
     return obj;
