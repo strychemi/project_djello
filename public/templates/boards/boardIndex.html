@@ -1,12 +1,12 @@
-<h1 class="page-header">Board Index</h1>
+<div class="container">
+  <h1 class="page-header">Board Index</h1>
 
-
-<div ng-repeat="(k,v) in boards">
-  <a ui-sref="boards.show({ id: {{v.id}} })">
-    <div class="panel panel-default">
-      <div class="panel-body">
-        {{v.title}}
+  <div ng-repeat="(k,v) in boards">
+    <a ui-sref="boards.show({ id: {{v.id}} })">
+      <div class="panel panel-default">
+        <div class="panel-body">{{v.title}}</div>
       </div>
-    </div>
-  </a>
+    </a>
+  </div>
+
 </div>
