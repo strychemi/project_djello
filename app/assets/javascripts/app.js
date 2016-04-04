@@ -34,8 +34,7 @@ var djello = angular.module('djello', ['ui.router', 'ui.bootstrap', 'restangular
             })
             .state('boards.index', {
               url: '',
-              templateUrl: 'templates/boards/boardIndex.html',
-              controller: 'BoardsCtrl',
+              templateUrl: 'templates/boards/boardIndex.html'
             })
             .state('boards.show', {
               url: '/:id',

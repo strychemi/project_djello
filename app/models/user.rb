@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
 
 
   def make_board
-    board = Board.new(title: "Give me a title", user_id: self.id)
+    board = Board.new(title: "Give me a title...", user_id: self.id)
     board.save
   end
 
