@@ -6,8 +6,8 @@
     <div class="panel panel-default list">
       <div class="btn delete-link" ng-click="deleteList(list.id, board.id)">X</div>
       <div class="panel-body">
-        <div><strong>{{list.title}}</strong></div>
-        <div>{{list.description}}</div>
+        <div><strong editable-text="list.title" onbeforeSave="updateList(board.id, list.id, $data, undefined)">{{list.title}}</strong></div>
+        <div editable-text="list.description" onbeforeSave="updateList(board.id, list.id, undefined, $data)">{{list.description}}</div>
         <card-panel ng-repeat="card in list.cards" card="card"></card-panel>
       </div>
     </div>

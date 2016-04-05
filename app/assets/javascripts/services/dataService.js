@@ -66,6 +66,18 @@ djello.factory('dataService',
       return Restangular.one('lists', listId).remove(listParams);
     };
 
+    var updateList = function(boardId, listId, title, description) {
+      var updatedList = {
+        board_id: boardId
+      };
+      if (title) {
+        updatedList.title = title;
+      } else if (description) {
+        updatedList.description = description;
+      }
+      return Restangular.one('lists', listId).patch(updatedList);
+    };
+
     return {
       callAllBoardsData: callAllBoardsData,
       getBoards: getBoards,
@@ -73,6 +85,7 @@ djello.factory('dataService',
       deleteBoard: deleteBoard,
       updateBoard: updateBoard,
       createList: createList,
-      deleteList: deleteList
+      deleteList: deleteList,
+      updateList: updateList
     };
 }]);
