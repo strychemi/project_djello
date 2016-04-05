@@ -58,4 +58,24 @@ djello.controller('BoardsCtrl',
           }
         );
       };
+
+      $scope.deleteList = function(listId, boardId) {
+        dataService.deleteList(listId, boardId)
+        .then(
+          function(response) {
+            var lists = $scope.boards[boardId].lists;
+            var listIndex;
+            for (var i = 0; i < lists.length; i++) {
+              if (lists[i].id === listId) {
+                listIndex = i;
+                break;
+              }
+            }
+            lists.splice(listIndex, 1);
+          },
+          function(response) {
+            console.log("API call for deleting a List didn't work.");
+          }
+        );
+      };
 }]);

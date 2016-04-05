@@ -9,7 +9,7 @@
 
   <div class="list-container" ng-repeat="list in lists">
     <div class="panel panel-default list">
-      <div class="btn delete-link" ng-click="deleteList(list.id)">X</div>
+      <div class="btn delete-link" ng-click="deleteList(list.id, board.id)">X</div>
       <div class="panel-body">
         <div><strong>{{list.title}}</strong></div>
         <div>{{list.description}}</div>
