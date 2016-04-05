@@ -26,10 +26,19 @@ html, body {
 .board-tile {
   background: rgb(2, 106, 167);
   color: white;
+  position: relative;
+  z-index: 1;
   &:hover {
     background: #286090;
     cursor: pointer;
   }
+}
+
+.delete-board-link {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
 }
 
 .create-tile {
@@ -45,10 +54,6 @@ html, body {
 // Board Show Page
 
 .board-show {
-  // margin-top: -$navbar-height;
-  // padding-top: $navbar-height;
-  // padding-left: 15px;
-  // min-height: 100%;
   position: absolute;
   top: $navbar-height;
   left: 0;
