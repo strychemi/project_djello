@@ -2,11 +2,6 @@
 
   <h3 editable-text="board.title" onbeforesave="updateBoard($data, board)">{{ board.title }}</h3>
 
-  <h1>
-    <div class="btn btn-primary" ng-click="createList(board.id, 'Give me a title..', 'Give me a description...')">Create a List</div>
-  </h1>
-
-
   <div class="list-container" ng-repeat="list in lists">
     <div class="panel panel-default list">
       <div class="btn delete-link" ng-click="deleteList(list.id, board.id)">X</div>
@@ -14,6 +9,14 @@
         <div><strong>{{list.title}}</strong></div>
         <div>{{list.description}}</div>
         <card-panel ng-repeat="card in list.cards" card="card"></card-panel>
+      </div>
+    </div>
+  </div>
+
+  <div class="list-container">
+    <div class="panel panel-default list-create" ng-click="createList(board.id, 'Give me a title..', 'Give me a description...')">
+      <div class="panel-body">
+        <p>Create a new List...</p>
       </div>
     </div>
   </div>
