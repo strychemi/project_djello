@@ -3,7 +3,7 @@ class CardsController < ApplicationController
 
   def index
     @board = current_user.owned_boards.find(params[:board_id])
-    @list = lists.find(params[:list_id])
+    @list = @board.lists.find(params[:list_id])
     @cards = @list.cards
     respond_to do |format|
       format.json {render json: @cards}
@@ -12,7 +12,7 @@ class CardsController < ApplicationController
 
   def create
     @board = current_user.owned_boards.find(params[:board_id])
-    @list = lists.find(params[:list_id])
+    @list = @board.lists.find(params[:list_id])
     @card = @list.cards.build(card_params)
     respond_to do |format|
       if @card.save
@@ -25,7 +25,7 @@ class CardsController < ApplicationController
 
   def update
     @board = current_user.owned_boards.find(params[:board_id])
-    @list = lists.find(params[:list_id])
+    @list = @board.lists.find(params[:list_id])
     @card = @card.cards.find(params[:id])
     respond_to do |format|
       if @card.update(card_params)

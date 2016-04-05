@@ -1,5 +1,5 @@
 <div class="panel panel-default list">
-  <div class="btn delete-link" ng-click="deleteList(list.id, board.id)">X</div>
+  <div class="btn delete-link" ng-click="deleteList({listId: list.id, boardId: board.id})">X</div>
   <div class="panel-body">
     <div class="row">
       <div class="col-xs-12">
@@ -13,7 +13,12 @@
     </div>
     <card-panel ng-repeat="card in list.cards" card="card"></card-panel>
   </div>
-  <div class="panel-footer add-card">
+  <div class="panel-footer add-card" ng-hide="cardForms[list.id]" ng-click="toggleCardForm({listId: list.id})">
     Add a Card...
+  </div>
+  <div class="panel-footer add-card" ng-show="cardForms[list.id]">
+    <input type="text" ng-model="newCardTitle" class="form-control" placeholder="Title">
+    <button class="btn btn-success" style="margin-top: 10px" ng-click="createCard({boardId: board.id, listId: list.id, title: newCardTitle})">Add</button>
+    <button class="btn" style="margin-top: 10px" ng-click="toggleCardForm({listId: list.id})">X</button>
   </div>
 </div>

@@ -6,12 +6,12 @@
   </div>
 
   <div class="list-container" ng-repeat="list in lists">
-    <list-panel></list-panel>
+    <list-panel board="board" list="list", card-forms="cardForms" toggle-card-form="toggleCardForm(listId)" delete-list="deleteList(listId, boardId)" create-card="createCard(boardId, listId, title)"></list-panel>
   </div>
 
   <div class="list-container">
     <div class="panel panel-default list-create" ng-click="createList(board.id, 'Give me a title..', 'Give me a description...')">
-      <div class="panel-body" ng-click="createCard()">
+      <div class="panel-body">
         <p>Create a new List...</p>
       </div>
     </div>
