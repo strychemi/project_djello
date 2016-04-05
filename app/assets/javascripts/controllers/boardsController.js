@@ -21,7 +21,6 @@ djello.controller('BoardsCtrl',
       };
 
       $scope.updateBoard = function(title, board) {
-        console.log(board);
         return dataService.updateBoard(title, board)
         .then(
           function(response) {

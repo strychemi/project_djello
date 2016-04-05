@@ -6,10 +6,13 @@
     <div class="btn btn-primary" ng-click="createList(board.id, 'Give me a title..', 'Give me a description...')">Create a List</div>
   </h1>
 
-  <div ng-repeat="list in lists">
+
+  <div class="list-container" ng-repeat="list in lists">
     <div class="panel panel-default list">
+      <div class="btn delete-link" ng-click="deleteList(list.id)">X</div>
       <div class="panel-body">
-        <p><strong>{{list.title}}</strong></p>
+        <div><strong>{{list.title}}</strong></div>
+        <div>{{list.description}}</div>
         <card-panel ng-repeat="card in list.cards" card="card"></card-panel>
       </div>
     </div>
