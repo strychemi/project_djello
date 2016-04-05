@@ -14,7 +14,6 @@ html, body {
   cursor: pointer;
 }
 
-
 // Navbar
 
 .navbar-inverse {
@@ -108,4 +107,12 @@ html, body {
 
 .list-text {
   color: #222;
+}
+
+.add-card {
+  background: #e2e4e6;
+  color: #888;
+  &:hover {
+    background: #ccc;
+  }
 }

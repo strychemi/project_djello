@@ -6,27 +6,12 @@
   </div>
 
   <div class="list-container" ng-repeat="list in lists">
-    <div class="panel panel-default list">
-      <div class="btn delete-link" ng-click="deleteList(list.id, board.id)">X</div>
-      <div class="panel-body">
-      <div class="row">
-        <div class="col-xs-12">
-          <strong editable-text="list.title" onbeforeSave="updateList(board.id, list.id, $data, undefined)" class="list-text">{{list.title}}</strong>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <div editable-text="list.description" onbeforeSave="updateList(board.id, list.id, undefined, $data)" class="list-text">{{list.description}}</div>
-        </div>
-      </div>
-        <card-panel ng-repeat="card in list.cards" card="card"></card-panel>
-      </div>
-    </div>
+    <list-panel></list-panel>
   </div>
 
   <div class="list-container">
     <div class="panel panel-default list-create" ng-click="createList(board.id, 'Give me a title..', 'Give me a description...')">
-      <div class="panel-body">
+      <div class="panel-body" ng-click="createCard()">
         <p>Create a new List...</p>
       </div>
     </div>
