@@ -4,7 +4,7 @@ class ListsController < ApplicationController
   def index
     @lists = current_user.owned_boards.find(params[:board_id]).lists
     respond_to do |format|
-      format.json {render json: @lists}
+      format.json {render json: @lists.to_json(include: :cards)}
     end
   end
 
@@ -13,9 +13,9 @@ class ListsController < ApplicationController
     @list = @board.lists.build(title: "Give me a title...", description: "Give me a description...")
     respond_to do |format|
       if @list.save
-        format.json { render json: @list, status: :created }
+        format.json { render json: @list.to_json(include: :cards), status: :created }
       else
-        format.json { render json: @list, status: :unprocessable_entity }
+        format.json { render json: @list.to_json(include: :cards), status: :unprocessable_entity }
       end
     end
   end
@@ -25,9 +25,9 @@ class ListsController < ApplicationController
     @list = @board.lists.find(params[:id])
     respond_to do |format|
       if @list.update(board_params)
-        format.json { render json: @list, status: 200 }
+        format.json { render json: @list.to_json(include: :cards), status: 200 }
       else
-        format.json { render json: @list, status: 404 }
+        format.json { render json: @list.to_json(include: :cards), status: 404 }
       end
     end
   end
@@ -37,9 +37,9 @@ class ListsController < ApplicationController
     @list = @board.lists.find(params[:id])
     respond_to do |format|
       if @list.destroy
-        format.json { render json: @list, status: 200 }
+        format.json { render json: @list.to_json(include: :cards), status: 200 }
       else
-        format.json { render json: @list, status: 404 }
+        format.json { render json: @list.to_json(include: :cards), status: 404 }
       end
     end
   end
