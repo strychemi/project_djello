@@ -49,9 +49,9 @@ var djello = angular.module('djello', ['ui.router', 'ui.bootstrap', 'restangular
             });
         }])
     //Error Logging
-    .run(function($rootScope){
+    .run([ '$rootScope', function($rootScope){
       $rootScope.$on("$stateChangeError", console.log.bind(console));
-    })
-    .run(function(editableOptions) {
+    }])
+    .run(['editableOptions', function(editableOptions) {
       editableOptions.theme = 'bs3'; // bootstrap3 theme. Can be also 'bs2', 'default'
-    });
+    }]);
