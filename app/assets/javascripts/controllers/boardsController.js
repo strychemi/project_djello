@@ -12,11 +12,25 @@ djello.controller('BoardsCtrl',
         .then(
           function(response) {
             $scope.boards[response.id] = response;
-            console.log($scope.boards[response.id]);
             $state.go('boards.show', {id: response.id});
           },
           function(error){
             console.log("API call for creating a board didn't work.");
+          }
+        );
+      };
+
+      $scope.updateBoard = function(title, board) {
+        console.log(board);
+        return dataService.updateBoard(title, board)
+        .then(
+          function(response) {
+            $scope.boards[response.id].title = response.title;
+            return true;
+          },
+          function(response) {
+            console.log("API call for updating a board didn't work");
+            return false;
           }
         );
       };
@@ -38,7 +52,6 @@ djello.controller('BoardsCtrl',
         dataService.createList(boardId, title, description)
         .then(
           function(response) {
-            console.log($scope.boards[boardId]);
             $scope.boards[boardId].lists.push(response);
           },
           function(response) {
