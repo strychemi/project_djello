@@ -116,3 +116,18 @@ html, body {
     background: #ccc;
   }
 }
+
+// Card
+
+.card-panel {
+  word-wrap: break-word;
+  position: relative;
+  z-index: 1;
+}
+
+.card-delete {
+  float: right;
+  top: 0;
+  right: 0;
+  z-index: 3;
+}

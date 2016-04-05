@@ -9,7 +9,15 @@ djello.directive('listPanel', function() {
       toggleCardForm: "&",
       deleteList: "&",
       createCard: "&",
-      updateList: "&"
+      updateList: "&",
+      deleteCard: "&",
+    },
+    link: function(scope) {
+      var createCard = scope.createCard;
+      scope.createCard = function(boardId, listId, title) {
+        scope.newCardTitle = "";
+        createCard(boardId, listId, title);
+      };
     }
   };
 });

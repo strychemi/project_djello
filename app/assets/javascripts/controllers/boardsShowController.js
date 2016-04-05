@@ -27,6 +27,26 @@ djello.controller('BoardsShowCtrl',
           );
         };
 
+        $scope.deleteCard = function(boardId, listId, cardId) {
+          dataService.deleteCard(boardId, listId, cardId)
+          .then(
+            function (response) {
+              var lists = $scope.board.lists;
+              var listIndex = _.findIndex(lists,
+                function(el) { return el.id === listId; }
+              );
+              var cards = lists[listIndex].cards;
+              var cardIndex = _.findIndex(cards,
+                function(el) { return el.id === cardId; }
+              );
+              cards.splice(cardIndex,1);
+            },
+            function (response) {
+              console.log("API call for deleting a Card didn't work.");
+            }
+          );
+        };
+
       } else {
         $state.go("boards.index");
       }

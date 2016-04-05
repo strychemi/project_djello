@@ -1,9 +1,10 @@
 class CardsController < ApplicationController
   before_action :current_user
+  before_action :get_board
+  before_action :get_list
+  before_action :get_card, except: [:index, :create]
 
   def index
-    @board = current_user.owned_boards.find(params[:board_id])
-    @list = @board.lists.find(params[:list_id])
     @cards = @list.cards
     respond_to do |format|
       format.json {render json: @cards}
@@ -11,8 +12,6 @@ class CardsController < ApplicationController
   end
 
   def create
-    @board = current_user.owned_boards.find(params[:board_id])
-    @list = @board.lists.find(params[:list_id])
     @card = @list.cards.build(card_params)
     respond_to do |format|
       if @card.save
@@ -24,9 +23,6 @@ class CardsController < ApplicationController
   end
 
   def update
-    @board = current_user.owned_boards.find(params[:board_id])
-    @list = @board.lists.find(params[:list_id])
-    @card = @card.cards.find(params[:id])
     respond_to do |format|
       if @card.update(card_params)
         format.json { render json: @card, status: 200 }
@@ -37,9 +33,6 @@ class CardsController < ApplicationController
   end
 
   def destroy
-    @board = current_user.owned_boards.find(params[:board_id])
-    @list = @board.lists.find(params[:list_id])
-    @card = @card.cards.find(params[:id])
     respond_to do |format|
       if @card.destroy
         format.json { render json: @card, status: 200 }
@@ -53,5 +46,32 @@ class CardsController < ApplicationController
 
   def card_params
     params.require(:card).permit(:title, :description, :list_id)
+  end
+
+  def get_board
+    @board = current_user.owned_boards.find_by_id(params[:board_id])
+    unless @board
+      respond_to do |format|
+        format.json { render json: @board, status: 422 }
+      end
+    end
+  end
+
+  def get_list
+    @list = @board.lists.find_by_id(params[:list_id])
+    unless @list
+      respond_to do |format|
+        format.json { render json: @list, status: 422 }
+      end
+    end
+  end
+
+  def get_card
+    @card = @list.cards.find_by_id(params[:id])
+    unless @card
+      respond_to do |format|
+        format.json { render json: @card, status: 422 }
+      end
+    end
   end
 end

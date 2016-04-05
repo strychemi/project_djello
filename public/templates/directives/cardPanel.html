@@ -1,6 +1,7 @@
 <div class="panel panel-default">
+  <div class="btn card-delete" ng-click="deleteCard({boardId: board.id, listId: list.id, cardId: card.id})">X</div>
   <div class="panel-body">
-    <p>{{ card.title }}</p>
+    <strong>{{ card.title }}</strong>
     <p>{{ card.description }}</p>
   </div>
 </div>

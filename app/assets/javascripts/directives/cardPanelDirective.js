@@ -3,7 +3,10 @@ djello.directive('cardPanel', function() {
     templateUrl: "templates/directives/cardPanel.html",
     restrict: "E",
     scope: {
-      card: "="
+      board: "=",
+      list: "=",
+      card: "=",
+      deleteCard: "&"
     }
   };
 });
