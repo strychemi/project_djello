@@ -3,12 +3,12 @@
   <div class="panel-body">
     <div class="row">
       <div class="col-xs-12">
-        <strong editable-text="list.title" onbeforeSave="updateList(board.id, list.id, $data, undefined)" class="list-text">{{list.title}}</strong>
+        <strong editable-text="list.title" onbeforeSave="updateList({boardId: board.id, listId: list.id, title: $data, description: undefined})" class="list-text">{{list.title}}</strong>
       </div>
     </div>
     <div class="row">
       <div class="col-xs-12">
-        <div editable-text="list.description" onbeforeSave="updateList(board.id, list.id, undefined, $data)" class="list-text">{{list.description}}</div>
+        <div editable-text="list.description" onbeforeSave="updateList({boardId: board.id, listId: list.id, title: undefined, description: $data})" class="list-text">{{list.description}}</div>
       </div>
     </div>
     <card-panel ng-repeat="card in list.cards" card="card"></card-panel>

@@ -67,8 +67,8 @@ djello.controller('BoardsCtrl',
             var listIndex = _.findIndex(lists,
               function(el) { return el.id === listId; }
             );
-            list.title = title || list.title;
-            list.description = description || list.description;
+            lists[listIndex].title = title || lists[listIndex].title;
+            lists[listIndex].description = description || lists[listIndex].description;
           },
           function(response) {
             console.log("API call for deleting a List didn't work.");

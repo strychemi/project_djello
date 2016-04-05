@@ -8,7 +8,8 @@ djello.directive('listPanel', function() {
       cardForms: "=",
       toggleCardForm: "&",
       deleteList: "&",
-      createCard: "&"
+      createCard: "&",
+      updateList: "&"
     }
   };
 });
