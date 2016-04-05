@@ -12,6 +12,7 @@ djello.controller('BoardsCtrl',
         .then(
           function(response) {
             $scope.boards[response.id] = response;
+            console.log($scope.boards[response.id]);
             $state.go('boards.show', {id: response.id});
           },
           function(error){
@@ -37,6 +38,7 @@ djello.controller('BoardsCtrl',
         dataService.createList(boardId, title, description)
         .then(
           function(response) {
+            console.log($scope.boards[boardId]);
             $scope.boards[boardId].lists.push(response);
           },
           function(response) {

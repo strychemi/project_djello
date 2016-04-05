@@ -1,20 +1,22 @@
 <div class="container">
-  <div class="row">
-    <div class="col-xs-12">
-      <h1 class="page-header">Board Index</h1>
-    </div>
-    <div class="col-xs-2">
-      <h1><div class="btn btn-primary" ng-click="createBoard()" >Create Board</div></h1>
+  <h3 class="page-header">Boards</h3>
+
+  <div ng-repeat="(k,v) in boards" class="col-sm-4 col-md-3">
+    <div ui-sref="boards.show({ id: {{v.id}} })">
+      <div class="panel panel-default board-tile">
+        <div class="panel-body">
+          <p>{{v.title}}</p>
+        </div>
+      </div>
     </div>
   </div>
 
-
-  <div ng-repeat="(k,v) in boards">
-    <a ui-sref="boards.show({ id: {{v.id}} })">
-      <div class="panel panel-default">
-        <div class="panel-body">{{v.title}}</div>
+  <div class="col-sm-4 col-md-3">
+    <div class="panel panel-default create-tile" ng-click="createBoard()">
+      <div class="panel-body">
+        <p>Create a new Board...</p>
       </div>
-    </a>
+    </div>
   </div>
 
 </div>

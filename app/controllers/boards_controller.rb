@@ -12,9 +12,9 @@ class BoardsController < ApplicationController
     @board = current_user.owned_boards.build(title: "Give me a title...")
     respond_to do |format|
       if @board.save
-        format.json { render json: @board, status: :created }
+        format.json { render json: @board.to_json(include: [:lists => {include: :cards}]), status: :created }
       else
-        format.json { render json: @board, status: :unprocessable_entity }
+        format.json { render json: @board.to_json(include: [:lists => {include: :cards}]), status: :unprocessable_entity }
       end
     end
   end
@@ -23,9 +23,9 @@ class BoardsController < ApplicationController
     @board = current_user.owned_boards.find(params[:id])
     respond_to do |format|
       if @board.update(board_params)
-        format.json { render json: @board, status: 200 }
+        format.json { render json: @board.to_json(include: [:lists => {include: :cards}]), status: 200 }
       else
-        format.json { render json: @board, status: 404 }
+        format.json { render json: @board.to_json(include: [:lists => {include: :cards}]), status: 404 }
       end
     end
   end
@@ -34,9 +34,9 @@ class BoardsController < ApplicationController
     @board = current_user.owned_boards.find(params[:id])
     respond_to do |format|
       if @board.destroy
-        format.json { render json: @board, status: 200 }
+        format.json { render json: @board.to_json(include: [:lists => {include: :cards}]), status: 200 }
       else
-        format.json { render json: @board, status: 404 }
+        format.json { render json: @board.to_json(include: [:lists => {include: :cards}]), status: 404 }
       end
     end
   end

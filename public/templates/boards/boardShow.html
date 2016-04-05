@@ -12,12 +12,8 @@
 
   <div class="col-xs-3" ng-repeat="list in lists">
     <div class="panel panel-default">
-      <div class="panel-heading text-center">
-        <h2 class="panel-title">{{list.title}}</h2>
-        <hr>
-        <p>{{list.description}}</p>
-      </div>
       <div class="panel-body">
+        <p>{{list.title}}</p>
         <card-panel ng-repeat="card in list.cards" card="card"></card-panel>
       </div>
     </div>

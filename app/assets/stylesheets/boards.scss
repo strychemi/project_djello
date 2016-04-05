@@ -1,0 +1,35 @@
+// Navbar
+
+.navbar-inverse {
+  background: rgb(2, 106, 167);
+  .navbar-brand {
+    color: #fff;
+  }
+  .navbar-text {
+    color: #fff;
+  }
+  .navbar-link {
+    color: #fff;
+  }
+}
+
+// Board Index Page
+
+.board-tile {
+  background: rgb(2, 106, 167);
+  color: white;
+  &:hover {
+    background: #286090;
+    cursor: pointer;
+  }
+}
+
+.create-tile {
+  background: #ddd;
+  color: #888;
+  &:hover {
+    background: #ccc;
+    color: #777;
+    cursor: pointer;
+  }
+}
