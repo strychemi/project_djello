@@ -11,6 +11,8 @@ djello.directive('listPanel', function() {
       createCard: "&",
       updateList: "&",
       deleteCard: "&",
+      editCard: "&",
+      closeCard: "&"
     },
     link: function(scope) {
       var createCard = scope.createCard;

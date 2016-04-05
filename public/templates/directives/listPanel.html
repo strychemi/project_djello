@@ -11,7 +11,7 @@
         <div editable-text="list.description" onbeforeSave="updateList({boardId: board.id, listId: list.id, title: undefined, description: $data})" class="list-text">{{list.description}}</div>
       </div>
     </div>
-    <card-panel ng-repeat="card in list.cards" card="card" board="board" list="list" delete-card="deleteCard({boardId: board.id, listId: list.id, cardId: card.id})"></card-panel>
+    <card-panel ng-repeat="card in list.cards" card="card" board="board" list="list" delete-card="deleteCard({boardId: board.id, listId: list.id, cardId: card.id})" edit-card="editCard()" close-card="closeCard()"></card-panel>
   </div>
 
   <div class="panel-footer add-card" ng-hide="cardForms[list.id]" ng-click="toggleCardForm({listId: list.id})">

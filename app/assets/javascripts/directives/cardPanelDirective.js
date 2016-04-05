@@ -6,7 +6,9 @@ djello.directive('cardPanel', function() {
       board: "=",
       list: "=",
       card: "=",
-      deleteCard: "&"
+      deleteCard: "&",
+      editCard: "&",
+      closeCard: "&"
     }
   };
 });

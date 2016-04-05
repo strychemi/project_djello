@@ -1,6 +1,6 @@
 djello.controller('BoardsShowCtrl',
-  ['$scope', 'board', '$state', 'dataService',
-    function($scope, board, $state, dataService){
+  ['$scope', 'board', '$state', 'dataService', 'ModalService',
+    function($scope, board, $state, dataService, ModalService){
       if (board) {
         $scope.board = board;
         $scope.lists = board.lists;
@@ -45,6 +45,23 @@ djello.controller('BoardsShowCtrl',
               console.log("API call for deleting a Card didn't work.");
             }
           );
+        };
+
+        $scope.editCard = function(boardId, listId, cardId) {
+          ModalService.showModal({
+            templateUrl: "templates/modals/cardModal.html",
+            controller: "cardModalCtrl"
+          }).then(function(modal) {
+            modal.element.modal();
+            modal.close.then(
+              function(result) {
+                console.log(result);
+            });
+          });
+        };
+
+        $scope.closeCard = function() {
+          close();
         };
 
       } else {
