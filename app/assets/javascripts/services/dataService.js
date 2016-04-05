@@ -70,11 +70,8 @@ djello.factory('dataService',
       var updatedList = {
         board_id: boardId
       };
-      if (title) {
-        updatedList.title = title;
-      } else if (description) {
-        updatedList.description = description;
-      }
+      updatedList.title = title || updatedList.title;
+      updatedList.description = description || updatedList.description;
       return Restangular.one('lists', listId).patch(updatedList);
     };
 

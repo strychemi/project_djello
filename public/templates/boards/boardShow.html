@@ -1,13 +1,24 @@
 <div class="container-fluid board-show">
-
-  <h3 editable-text="board.title" onbeforesave="updateBoard($data, board)">{{ board.title }}</h3>
+  <div class="row">
+    <div class="col-xs-12">
+        <h3 editable-text="board.title" onbeforesave="updateBoard($data, board)">{{ board.title }}</h3>
+    </div>
+  </div>
 
   <div class="list-container" ng-repeat="list in lists">
     <div class="panel panel-default list">
       <div class="btn delete-link" ng-click="deleteList(list.id, board.id)">X</div>
       <div class="panel-body">
-        <div><strong editable-text="list.title" onbeforeSave="updateList(board.id, list.id, $data, undefined)">{{list.title}}</strong></div>
-        <div editable-text="list.description" onbeforeSave="updateList(board.id, list.id, undefined, $data)">{{list.description}}</div>
+      <div class="row">
+        <div class="col-xs-12">
+          <strong editable-text="list.title" onbeforeSave="updateList(board.id, list.id, $data, undefined)" class="list-text">{{list.title}}</strong>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div editable-text="list.description" onbeforeSave="updateList(board.id, list.id, undefined, $data)" class="list-text">{{list.description}}</div>
+        </div>
+      </div>
         <card-panel ng-repeat="card in list.cards" card="card"></card-panel>
       </div>
     </div>

@@ -1,9 +1,19 @@
 // Global stylings
+
 $navbar-height: 3.75em;
 
 html, body {
   height: 100%;
 }
+
+// Editable modifications
+
+.editable-click {
+  color: none;
+  border-bottom: none;
+  cursor: pointer;
+}
+
 
 // Navbar
 
@@ -94,4 +104,8 @@ html, body {
     background: #286090;
     cursor: pointer;
   }
+}
+
+.list-text {
+  color: #222;
 }
