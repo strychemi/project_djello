@@ -4,7 +4,8 @@ djello.controller('BoardsCtrl',
   'boardData',
   'dataService',
   '$state',
-    function($scope, Auth, boardData, dataService, $state){
+  '_',
+    function($scope, Auth, boardData, dataService, $state, _){
       $scope.boards = boardData;
 
       $scope.createBoard = function() {

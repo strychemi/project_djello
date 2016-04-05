@@ -39,6 +39,8 @@ group :development do
   gem 'meta_request'
 end
 
+gem 'rails_12factor', group: :production
+
 source "https://rails-assets.org" do
   gem "rails-assets-angular-devise"
 end

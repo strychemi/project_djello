@@ -1,6 +1,6 @@
 djello.controller('BoardsShowCtrl',
-  ['$scope', 'board', '$state', 'dataService', 'ModalService',
-    function($scope, board, $state, dataService, ModalService){
+  ['$scope', 'board', '$state', 'dataService', 'ModalService', '_',
+    function($scope, board, $state, dataService, ModalService, _){
       if (board) {
         $scope.board = board;
         $scope.lists = board.lists;
