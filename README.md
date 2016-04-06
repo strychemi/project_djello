@@ -1,2 +1,3 @@
-# assignment_djello
-Project management with that great wobbly taste.
+# Djello
+
+[Heroku Deployed Link](https://strychemi-djello.herokuapp.com/)
