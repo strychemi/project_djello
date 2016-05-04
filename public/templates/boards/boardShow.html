@@ -5,16 +5,7 @@
     </div>
   </div>
   <div class="list-container" ng-repeat="list in lists">
-    <list-panel
-      board="board"
-      list="list"
-      card-forms="cardForms"
-      toggle-card-form="toggleCardForm(listId)"
-      delete-list="deleteList(listId, boardId)"
-      create-card="createCard(boardId, listId, title)" update-list="updateList(boardId, listId, title, description)"
-      delete-card="deleteCard(boardId, listId, cardId)"
-      edit-card="editCard()"
-      close-card="closeCard()"></list-panel>
+      <list-panel></list-panel>
   </div>
 
   <div class="list-container">

@@ -28,6 +28,7 @@ djello.controller('BoardsShowCtrl',
         };
 
         $scope.deleteCard = function(boardId, listId, cardId) {
+          console.log(boardId, listId, cardId);
           dataService.deleteCard(boardId, listId, cardId)
           .then(
             function (response) {
@@ -47,21 +48,18 @@ djello.controller('BoardsShowCtrl',
           );
         };
 
-        $scope.editCard = function(boardId, listId, cardId) {
+        $scope.updateCard = function(boardId, listId, cardId) {
           ModalService.showModal({
             templateUrl: "templates/modals/cardModal.html",
             controller: "cardModalCtrl"
           }).then(function(modal) {
+            // it's a bootstrap element, use 'modal' to show it
             modal.element.modal();
             modal.close.then(
               function(result) {
-                console.log(result);
+                console.log("CLOSED", result);
             });
           });
-        };
-
-        $scope.closeCard = function() {
-          close();
         };
 
       } else {
