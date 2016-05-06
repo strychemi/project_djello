@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   scope :api do
     scope :v1 do
-      resources :boards, except: [:new, :show, :edit]
+      resources :boards, except: [:new, :edit]
       resources :lists, except: [:new, :show, :edit]
       resources :cards, except: [:new, :show, :edit]
     end

@@ -2,9 +2,9 @@
   <h3 class="page-header">Boards</h3>
 
   <div ng-repeat="(k,v) in boards" class="col-sm-4 col-md-3">
-    <div ui-sref="boards.show({ id: {{v.id}} })">
+    <div>
       <div class="panel panel-default board-tile">
-        <div class="panel-body">
+        <div class="panel-body" ui-sref="boards.show({ id: {{v.id}} })">
           <p>{{v.title}}</p>
         </div>
         <div class="btn delete-link" ng-click="deleteBoard(v.id)">X</div>

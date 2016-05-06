@@ -1,11 +1,12 @@
 djello.controller('cardModalCtrl',
-  ['$scope', '$element', 'close',
-    function($scope, $element, close){
+  ['$scope', '$element', 'close', 'boardId', 'listId', 'cardId', 'dataService',
+    function($scope, $element, close, boardId, listId, cardId, dataService){
       // $scope.current = {
-      //   boardId: boardId,
-      //   listId: listId,
-      //   cardId: cardId
+      //   board: dataService.getBoard(boardId),
+      //   list: dataService.getLists(listId),
+      //   card: cardId
       // };
+
       //  This close function doesn't need to use jQuery or bootstrap, because
       //  the button has the 'data-dismiss' attribute.
       $scope.close = function(result) {

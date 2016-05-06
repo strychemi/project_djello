@@ -1,10 +1,10 @@
 <div class="container-fluid board-show">
   <div class="row">
     <div class="col-xs-12">
-        <h3 editable-text="board.title" onbeforesave="updateBoard($data, board)">{{ board.title }}</h3>
+        <h3 editable-text="board.title" onbeforesave="updateBoard($data, board.id)">{{ board.title }}</h3>
     </div>
   </div>
-  <div class="list-container" ng-repeat="list in lists">
+  <div class="list-container" ng-repeat="list in board.lists">
       <list-panel></list-panel>
   </div>
 

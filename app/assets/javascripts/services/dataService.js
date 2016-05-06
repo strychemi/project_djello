@@ -2,23 +2,24 @@ djello.factory('dataService',
   ['Restangular',
   function(Restangular){
 
-    var _rawData = {};
-    var _boards = {};
+    var _boards = [];
 
-    var callAllBoardsData = function() {
+    var callBoards = function() {
         return Restangular.all('boards').getList()
         .then(
           function(data) {
-            _rawData = data;
-            populateBoards();
-          }, function(error){
+            populateBoards(data);
+          },
+          function(error) {
             console.log("API call for all boards didn't work.");
-       });
+          }
+        );
     };
 
-    var populateBoards = function() {
-      _rawData.forEach(function(board) {
-        _boards[board.id] = board;
+    var populateBoards = function(data) {
+      _boards = [];
+      data.forEach(function(board) {
+        _boards.push(board);
       });
     };
 
@@ -26,12 +27,10 @@ djello.factory('dataService',
       return _boards;
     };
 
-    var getLists = function(boardId) {
-      return _boards[boardId].lists;
-    };
-
-    var getCards = function(boardId, listId) {
-      return _boards[boardId][listId].cards;
+    var getBoard = function(boardId) {
+      for (var index in _boards) {
+        if (boardId == _boards[index].id) { return _boards[index]; }
+      }
     };
 
     var createBoard = function() {
@@ -42,11 +41,35 @@ djello.factory('dataService',
       return Restangular.one('boards', boardId).remove();
     };
 
-    var updateBoard = function(title, board) {
+    var updateBoard = function(title, boardId) {
       var updatedBoard = {
         title: title
       };
-      return Restangular.one('boards', board.id).patch(updatedBoard);
+      return Restangular.one('boards', boardId).patch(updatedBoard);
+    };
+
+    var callBoardContent = function(boardId) {
+      return Restangular.one('boards', boardId).get()
+      .then(
+        function(response) {
+          for (var index in _boards) {
+            if (boardId == _boards[index].id) {
+              _boards[index] = response;
+            }
+          }
+        },
+        function(error) {
+          console.log("GET request for single board didn't work.");
+        }
+      );
+    };
+
+    var getLists = function(boardId) {
+      return _boards[boardId].lists;
+    };
+
+    var getCards = function(boardId, listId) {
+      return _boards[boardId][listId].cards;
     };
 
     var createList = function(boardId, title, description) {
@@ -92,11 +115,13 @@ djello.factory('dataService',
     };
 
     return {
-      callAllBoardsData: callAllBoardsData,
+      callBoards: callBoards,
       getBoards: getBoards,
+      getBoard: getBoard,
       createBoard: createBoard,
       deleteBoard: deleteBoard,
       updateBoard: updateBoard,
+      callBoardContent: callBoardContent,
       createList: createList,
       deleteList: deleteList,
       updateList: updateList,

@@ -25,7 +25,7 @@ var djello = angular.module('djello', ['ui.router', 'ui.bootstrap', 'restangular
               },
               resolve: {
                 boardData: ['dataService', function(dataService) {
-                  return dataService.callAllBoardsData()
+                  return dataService.callBoards()
                     .then(function() {
                       return dataService.getBoards();
                     });
@@ -43,7 +43,12 @@ var djello = angular.module('djello', ['ui.router', 'ui.bootstrap', 'restangular
               resolve: {
                 board: ['dataService', '$stateParams',
                 function(dataService, $stateParams) {
-                  return dataService.getBoards()[$stateParams.id];
+                  //return dataService.getBoards()[$stateParams.id];
+                  return dataService.callBoardContent($stateParams.id)
+                    .then(function() {
+                      
+                      return dataService.getBoard($stateParams.id);
+                    });
                 }]
               }
             });
